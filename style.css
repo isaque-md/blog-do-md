@@ -1,0 +1,381 @@
+/* --- VARIÁVEIS E BASE --- */
+:root {
+    --bg-color: #88b9eb;   
+    --card-bg: #4e93d8;   
+    --text-color: #bcf5f7; 
+    --accent-color: #f8f9fa;
+    --header-bg: #1ccff3;
+}
+
+.dark-mode {
+    --bg-color: #0d1b2a;
+    --card-bg: #1b263b;
+    --text-color: #e0e1dd;
+    --accent-color: #4cc9f0;
+    --header-bg: #0b132b;
+}
+
+/* --- 1. TEXTURA DE FUNDO (Ajuste no Body) --- */
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Montserrat', sans-serif; 
+    margin: 0;
+    transition: all 0.3s ease;
+    /* Textura sutil de "grão" ou "pontos" para não ficar liso */
+    background-image: 
+        radial-gradient(var(--accent-color) 0.5px, transparent 0.5px);
+    background-size: 30px 30px;
+    background-attachment: fixed; /* A textura não "corre" com o scroll */
+}
+
+/* --- 2. AUMENTAR NOME (User Name) --- */
+.user-name { 
+    font-weight: 700; 
+    font-size: 1.4rem; /* Aumentado de 1rem para 1.4rem */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-color);
+    border-left: 3px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+/* --- 3. BOTÃO DE TEMA SÓ COM ÍCONE --- */
+.btn-tema-clean {
+    background: var(--card-bg);
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Fica redondinho */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-tema-clean:hover {
+    transform: rotate(30deg) scale(1.1);
+    background: var(--accent-color);
+    color: var(--header-bg);
+}
+
+/* Textura de Fundo */
+.bg-texture {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(var(--accent-color) 0.3px, transparent 0.3px);
+    background-size: 20px 20px;
+    opacity: 0.08;
+    z-index: -1;
+}
+
+/* --- HEADER E LOGO --- */
+header {
+    background-color: var(--header-bg);
+    padding: 15px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.logo {
+    font-family: 'Bungee', cursive;
+    font-size: 2.2rem;
+    color: var(--accent-color);
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+}
+
+.user-name { font-weight: 700; font-size: 1rem; }
+
+/* --- GRID PRINCIPAL --- */
+.main-container {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 25px;
+    max-width: 1300px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.05); /* Transparência */
+    backdrop-filter: blur(10px); /* Desfoque do fundo */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borda fina para brilho */
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* O card sobe levemente */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* Sombra aumenta */
+    border-color: var(--accent-color); /* A borda brilha com a sua cor de destaque */
+}
+
+.card h3 {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+/* --- LISTAS E ÍCONES (Unificado para evitar redundância) --- */
+.card ul { list-style: none; padding: 0; margin-top: 15px; }
+
+.card li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.card li::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+/* Ícones Específicos: Formação */
+.formacao li:nth-child(1)::before { content: "\f807"; }
+.formacao li:nth-child(2)::before { content: "\f5a2"; }
+.formacao li:nth-child(3)::before { content: "\f11c"; }
+
+/* Ícones Específicos: Lifestyle (Corrigido para 2 colunas) */
+.lifestyle-grid ul:nth-child(1) li:nth-child(1)::before { content: "\f44b"; }
+.lifestyle-grid ul:nth-child(1) li:nth-child(2)::before { content: "\f70c"; }
+.lifestyle-grid ul:nth-child(1) li:nth-child(3)::before { content: "\f001"; }
+
+.lifestyle-grid ul:nth-child(2) li:nth-child(1)::before { content: "\f5b0"; }
+.lifestyle-grid ul:nth-child(2) li:nth-child(2)::before { content: "\f121"; }
+.lifestyle-grid ul:nth-child(2) li:nth-child(3)::before { content: "\f5ca"; }
+
+
+/* --- RESET PARA A PLAYLIST --- */
+.lista-musica {
+    list-style: none !important;
+    padding-left: 0 !important;
+}
+
+/* Remove qualquer ícone de "antes" que tenha sobrado de outras regras */
+.lista-musica li::before {
+    content: "\f025" !important; /* Insere a nota musical */
+    font-family: Font Awesome 6 Free !important; /* Garante que o emoji apareça */
+    margin-right: 10px !important;
+    display: inline-block !important;
+}
+
+/* Efeito de movimento e cor (Igual ao Avatar) */
+.lista-musica li {
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+.lista-musica li:hover {
+    color: var(--accent-color) !important;
+    transform: translateX(10px) !important;
+    font-weight: bold !important;
+}
+
+/* Ícones Específicos: Valores */
+.lista-valores li:nth-child(1)::before { content: "\f015"; }
+.lista-valores li:nth-child(2)::before { content: "\f0e3"; }
+.lista-valores li:nth-child(3)::before { content: "\f2dc"; }
+.lista-valores li:nth-child(4)::before { content: "\f654"; }
+
+/* --- COMPONENTES --- */
+.lifestyle-grid, .artistas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.foto-perfil {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-color);
+}
+
+/* Remove o visual de "link de internet" antigo */
+.contatos ul li a {
+    text-decoration: none;
+    color: inherit; /* Puxa a cor branca/clara do seu card */
+    display: block;
+    width: 150%;
+}
+
+/* Garante que o hover mude a cor do link também */
+.contatos ul li:hover a {
+    color: var(--accent-color);
+}   
+
+/* --- A MÁGICA PARA A GALERIA (RESOLVENDO O DEFEITO) --- */
+.container-interesses-galeria {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Força 2 colunas */
+    gap: 25px;
+    align-items: start; /* Impede que os cards da esquerda estiquem a galeria */
+}
+
+.slider-vertical {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.slide {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    position: absolute; opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active { opacity: 1; }
+
+.legenda-vertical {
+    margin-top: 15px;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .main-container, .container-interesses-galeria, .lifestyle-grid {
+        grid-template-columns: 1fr;
+    }
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00b4d8; /* Um tom mais claro no hover */
+}
+header {
+    position: relative; /* Necessário para o canvas se posicionar */
+    overflow: hidden;   /* Impede que as letras saiam do header */
+    background-color: var(--header-bg);
+}
+
+#matrix-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Fica atrás de tudo */
+    opacity: 0.15; /* Deixe bem sutil para não atrapalhar a leitura */
+    pointer-events: none; /* Garante que o mouse ignore o canvas */
+}
+
+/* Garante que o texto fique acima do efeito */
+.logo, .user-name, #theme-toggle {
+    position: relative;
+    z-index: 1;
+}
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Garante que fique atrás de tudo */
+    background-color: #0d1b2a; /* Cor de fundo idêntica ao seu modo dark */
+}
+
+/* Deixa os cards levemente transparentes para o efeito vazar */
+.card {
+    background-color: rgba(27, 38, 59, 0.85) !important;
+    backdrop-filter: blur(5px);
+}
+
+/* --- ESTILO ESPECÍFICO PARA SÉRIES E FILMES --- */
+
+/* Muda o ícone de cada item para um "Play" */
+.series li::before {
+    content: "\f144" !important; /* Ícone de Play (Circle Play) */
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    color: #0077b6; /* Um vermelho tipo Netflix para destacar */
+}
+
+/* Efeito ao passar o mouse nos títulos dos filmes */
+.series li {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.series li:hover {
+    color: var(--accent-color);
+    transform: translateX(8px); /* O nome do filme "anda" para o lado */
+    font-weight: bold;
+}
+
+/* Deixa o título do card com uma cor levemente diferente se quiser destacar */
+.series h3 i {
+    margin-left: 10px;
+    animation: pulse 2s infinite; /* Faz o ícone de filme pulsar de leve */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* --- EFEITO UNIFICADO PARA TODOS OS TÓPICOS --- */
+
+/* 1. Estado normal dos itens */
+.card ul li {
+    transition: all 0.3s ease; /* Faz a animação ser suave */
+    cursor: pointer;           /* Deixa a mãozinha no mouse */
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+/* 2. Efeito ao passar o mouse (IGUAL AO DE SÉRIES) */
+.card ul li:hover {
+    color: var(--accent-color) !important; /* Muda para o seu azul brilhante */
+    transform: translateX(10px);           /* Faz o texto andar para a direita */
+    font-weight: bold;                     /* Deixa em negrito */
+}
+
+/* 3. Ajuste para os ícones também mudarem de cor no hover */
+.card ul li:hover i, 
+.card ul li:hover::before {
+    color: var(--accent-color) !important;
+    filter: drop-shadow(0 0 5px var(--accent-color)); /* Dá um brilho no ícone */
+}
